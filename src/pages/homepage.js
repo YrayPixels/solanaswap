@@ -4,22 +4,42 @@ import { Avatar } from '@mui/material'
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Nav from '../component/nav';
 import TimerCount from '../component/timer';
+import { useConnection, useWallet } from '@solana/wallet-adapter-react';
 
 
 
 export default function HomePage() {
-
+    const { connection } = useConnection();
+    const { publicKey, sendTransaction } = useWallet();
     const [hideBalance, setHideBalance] = useState(false);
-    const [walletconnected, setConnected] = useState(false)
-    const [showConnect, setShowConnect] = useState(false);
     const [walletBalance, setWalletBalance] = useState(0);
     const [pub_address, setPubAddress] = useState('');
-    const [publicKey, setPublicKey] = useState(null);
+
     const [fromToken, setFromToken] = useState(null);
     const [toToken, setToToken] = useState(null);
     const [amount, setAmount] = useState(0);
 
 
+    useEffect(() => {
+        if (publicKey == null) {
+            setPubAddress('')
+            setWalletBalance(0);
+        } else {
+            setPubAddress(publicKey.toBase58())
+
+            async function getAccountBalance() {
+                try {
+                    const balance = await connection.getBalance(publicKey);
+                    setWalletBalance(balance / 1000000000);
+                } catch (error) {
+                    console.error('Error fetching account balance:', error);
+                }
+            }
+
+            getAccountBalance();
+        }
+
+    }, [publicKey])
 
 
     return (
@@ -50,18 +70,25 @@ export default function HomePage() {
                             <div className='mb-3'><span className='rounded-5 py-1 ps-2 border border-1'>+3.499 <span className='rounded-5 p-1 border'>+12 %</span></span></div>
 
                             <div className='mb-3'>
-                                {walletconnected == false ?
+                                <span style={{ visibility: 'hidden', position: 'absolute' }}>
+                                    <WalletMultiButton
+                                        sx={{ width: '100%', visbility: 'hidden' }}
+                                        className='rounded-5 multibuttton shadow w-100 text-white'
+                                    />
+                                </span>
+                                {!publicKey ?
                                     <>
-                                        <WalletMultiButton
-                                            sx={{ width: '100%', visbility: 'hidden' }}
-                                            className='rounded-5  inputMain shadow w-100 text-white'
-                                        />
-                                        <button onClick={() => { /*setShowConnect(true)*/ }} className='rounded-5  inputMain shadow w-100 text-white'> <Power /> Connect Wallet</button>
+                                        <button onClick={() => {
+                                            let button = document.getElementsByClassName('wallet-adapter-button-trigger')[0].click();
+                                            /*setShowConnect(true)*/
+                                        }} className='rounded-5  inputMain shadow w-100 text-white'> <Power /> Connect Wallet</button>
                                     </>
 
                                     :
                                     <>
-                                        <button onClick={() => { /*disconnectWallet(true)*/ }} className='rounded-5  inputMain shadow w-100 text-white'><Cancel /> Connected(click to disconnect)
+                                        <button onClick={() => {
+                                            let button = document.getElementsByClassName('wallet-adapter-button-trigger')[0].click();
+                                        }} className='rounded-5  inputMain shadow w-100 text-white'><Cancel /> Connected(click to disconnect)
                                             <br />
                                             <span>{`${pub_address.slice(0, 10)}..${pub_address.slice(-3, pub_address.length)}`}</span>
                                         </button>
