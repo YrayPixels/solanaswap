@@ -8,10 +8,10 @@ export default function Nav() {
             background: '#000355',
         }} className='d-flex flex-wrap px-5 py-3 container-fluid align-items-center justify-content-between align-items-center'>
 
-            <div className='text-center'>
+            <div className='text-center m-auto m-lg-0'>
                 <img src='/logoSolana.png' alt='logo' />
             </div>
-            <div className='d-flex align-items-center justify-lg-content-center g-2'>
+            <div className='d-flex m-auto m-lg-0 align-items-center justify-lg-content-center g-2'>
                 <span>
                     <Search sx={{ height: 24, marginRight: 5, }} />
                 </span>
