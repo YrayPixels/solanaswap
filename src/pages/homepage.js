@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react'
-import { Cancel, KeyboardArrowDown, Power, RemoveRedEye, Search, SyncAltRounded, Timer, Wallet } from '@mui/icons-material'
+import { Cancel, Power, RemoveRedEye, Search, Timer, Wallet } from '@mui/icons-material'
 import { Avatar } from '@mui/material'
 import { WalletMultiButton } from "@solana/wallet-adapter-react-ui";
 import Nav from '../component/nav';
 import TimerCount from '../component/timer';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
+import Swap from '../component/swap';
 
 
 
@@ -99,43 +100,7 @@ export default function HomePage() {
                             </div>
                             <p>Connect your wallet to start swapping on SolanaSwap, no hidden fees.</p>
                         </div>
-
-                        <div style={{
-                            background: '#00023350',
-                            border: '1px solid #515151',
-                        }} className='rounded-5 col-lg-6 text-start p-4' >
-                            <div className='mb-3'><p className='fw-bold'>SWAP TOKENS</p></div>
-                            <div className='d-flex justify-content-between align-items-center'>
-                                <div>
-                                    <p className='d-flex align-items-center'>Pay with  <Avatar sx={{ height: 40, width: 40, marginLeft: 2, marginRight: 2, border: '1px solid white' }} src='/solana.png' alt="Profile Picture" /> <KeyboardArrowDown /> </p>
-                                </div>
-                                <div className='d-flex justify-content-start'>
-                                    <p className='d-flex align-items-center justify-content-start'>You get  <Avatar sx={{ height: 40, width: 40, marginLeft: 2, marginRight: 2, border: '1px solid white' }} src='/bitcoin.png' alt="Profile Picture" /> <KeyboardArrowDown /> </p>
-                                </div>
-                            </div>
-                            <div className='d-flex align-items-center justify-content-around flex-wrap flex-lg-nowrap'>
-                                <div className='mb-3 col-12 col-lg-5'><input onChange={(e) => { setAmount(e.target.value) }} className='inputStyle rounded-5 ' type='text' placeholder='Enter amount' /></div>
-                                <div className='col-12 col-lg-2 text-center'>
-                                    <SyncAltRounded className='mb-3 text-center' sx={{ fontSize: '3em', background: '#0009E8', borderRadius: '50%', marginLeft: 5, marginRight: 5, padding: '5px', }} />
-                                </div>
-                                <div className='mb-3 col-12 col-lg-5'><input className='inputStyle rounded-5 ' type='text' placeholder='0.0000' /></div>
-
-                            </div>
-
-                            <div className='mb-3 align-items-center'> <Wallet /> <span>Balance:</span> <span className='btn btn-sm rounded-5 text-dark' style={{ background: '#FFFFFF' }}>{walletBalance} SOL</span> </div>
-
-                            <hr />
-                            <div className='d-flex flex-wrap flex-lg-nowrap align-items-center'>
-                                <div className="col-lg-6 col-12 me-lg-2 mb-3">
-                                    <input type='text' className='w-100 rounded-5 inputStyleBg' placeholder='Enter/paste Solana address' />
-                                </div>
-                                <div className='col-lg-6 col-12  mb-3'>
-                                    <button onClick={() => { }} className='rounded-5 w-100 btn text-white inputMain shadow btn-lg'><SyncAltRounded sx={{ fontSize: '30px', background: '#0009E8', borderRadius: '50%', padding: '5px', }} /> Approve token swap</button>
-                                </div>
-
-                            </div>
-
-                        </div>
+                        <Swap setAmount={setAmount} walletBalance={walletBalance} />
                     </div>
                 </div>
 
