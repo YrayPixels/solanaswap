@@ -6,7 +6,7 @@ export default function Nav() {
     return (
         <nav style={{
             background: '#000355',
-        }} className='d-flex flex-wrap px-5 py-3 container-fluid align-items-center justify-content-between align-items-center'>
+        }} className='d-flex flex-wrap px-5 py-3 mb-3 mb-lg-0 container-fluid align-items-center justify-content-between align-items-center'>
 
             <div className='text-center m-auto m-lg-0'>
                 <img src='/logoSolana.png' alt='logo' />
