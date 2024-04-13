@@ -1,31 +1,35 @@
 {
-  "name": "nemx-app",
+  "name": "new_sol",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@chakra-ui/core": "^0.8.0",
+    "@chakra-ui/css-reset": "^2.3.0",
+    "@chakra-ui/icons": "^2.1.1",
     "@chakra-ui/react": "^2.8.2",
     "@emotion/react": "^11.11.4",
     "@emotion/styled": "^11.11.5",
-    "@mui/icons-material": "^5.15.14",
-    "@mui/material": "^5.15.14",
-    "@project-serum/anchor": "^0.26.0",
-    "@solana/spl-token": "^0.4.3",
-    "@solana/spl-token-registry": "^0.2.4574",
+    "@mui/icons-material": "^5.15.15",
+    "@mui/material": "^5.15.15",
     "@solana/wallet-adapter-base": "^0.9.23",
     "@solana/wallet-adapter-react": "^0.15.35",
     "@solana/wallet-adapter-react-ui": "^0.9.35",
     "@solana/wallet-adapter-wallets": "^0.19.32",
     "@solana/web3.js": "^1.91.4",
-    "@solflare-wallet/sdk": "^1.4.2",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "@walletconnect/web3wallet": "^1.10.3",
+    "browserify-zlib": "^0.2.0",
+    "crypto-browserify": "^3.12.0",
+    "https-browserify": "^1.0.0",
+    "os-browserify": "^0.3.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.22.3",
     "react-scripts": "5.0.1",
-    "undefined": "^0.1.0",
+    "stream-browserify": "^3.0.0",
+    "stream-http": "^3.2.0",
+    "tweetnacl": "^1.0.3",
+    "url": "^0.11.3",
     "web-vitals": "^2.1.4"
   },
   "scripts": {
@@ -51,9 +55,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "devDependencies": {
-    "webpack": "^5.91.0",
-    "webpack-cli": "^5.1.4"
   }
 }

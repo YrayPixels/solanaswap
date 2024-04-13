@@ -11,21 +11,3 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.inputClass {
-  background: black;
-  border: 0px black;
-  color: white;
-}
-
-.inputClass :focus {
-  background: black;
-  border: 0px black;
-  color: white;
-}
-
-.labelText {
-  font-size: 18px;
-  color: #888888;
-  font-weight: bold;
-}
