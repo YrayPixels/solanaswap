@@ -242,7 +242,7 @@ nav::after {
     background-repeat: no-repeat;
     background-size: cover;
     overflow: hidden;
-    height: 100vh;
+    /* height: 100vh; */
 }
 
 .walletList {
@@ -264,8 +264,7 @@ nav::after {
     -webkit-text-fill-color: transparent;
 }
 
-
-/* @media screen(){
+@media screen and (max-width: 950px) {
     .mainPagebg {
         background-color: #000355;
         background-image: url('/public/background.png');
@@ -273,6 +272,7 @@ nav::after {
         background-repeat: no-repeat;
         background-size: cover;
         overflow: hidden;
-        height: 100vh;
+            /* height: 100vh; */
+
     }
-} */
+}

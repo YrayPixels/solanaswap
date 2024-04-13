@@ -48,7 +48,7 @@ export default function HomePage() {
             <div className='text-white mainPagebg' >
 
                 <Nav />
-                <div className='py-4 px-3 text-center'>
+                <div className='py-lg-5 px-3 text-center'>
                     <h2 className='display-5 text-center'><span className='fw-bold' style={{ color: '#2238ca' }}>Solana</span><span style={{ fontStyle: 'italic', fontWeight: 400, }}>Swap</span></h2>
                     <p className='col-lg-5 m-auto'>
                         SolanaSwap is a decentralized application that facilitates the swapping of tokens on Solana blockchain.
@@ -60,7 +60,7 @@ export default function HomePage() {
                         <TimerCount />
                     </div>
 
-                    <div className='d-flex flex-wrap justify-content-center align-items-stretch mt-3 m-auto'>
+                    <div className='d-flex flex-wrap py-md-5 pb-md-4 justify-content-center align-items-stretch mt-3 m-auto'>
                         <div style={{
                             background: '#00023350',
                             border: '1px solid #515151',
