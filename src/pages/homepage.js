@@ -18,69 +18,69 @@ export default function HomePage() {
     const [updater, setUpdater] = useState(0);
     const [alert, setAlert] = useState('THis is alert')
 
-    // useEffect(() => {
-    //     if (publicKey == null) {
-    //         setPubAddress('')
-    //         setWalletBalance(0);
-    //     } else {
-    //         setPubAddress(publicKey.toBase58())
-
-    //         async function getAccountBalance() {
-    //             try {
-    //                 const balance = await connection.getBalance(publicKey);
-    //                 fetch("https://price.jup.ag/v4/price?ids=SOL")
-    //                     .then((response) => response.json())
-    //                     .then((result) => {
-    //                         let perusdt = result.data.SOL.price
-    //                         setWalletBalance(balance / 1000000000 * perusdt);
-
-    //                     })
-    //                     .catch((error) => console.error(error));
-    //             } catch (error) {
-    //                 console.error('Error fetching account balance:', error);
-    //             }
-    //         }
-
-    //         getAccountBalance();
-    //     }
-
-    // }, [publicKey, walletBalance, setUpdater])
-
     useEffect(() => {
-        let intervalId;
-
-        const fetchAccountBalance = async () => {
-            try {
-                const balance = await connection.getBalance(publicKey);
-                fetch("https://price.jup.ag/v4/price?ids=SOL")
-                    .then((response) => response.json())
-                    .then((result) => {
-                        let perusdt = result.data.SOL.price;
-                        setWalletBalance(balance / 1000000000 * perusdt);
-                    })
-                    .catch((error) => console.error(error));
-            } catch (error) {
-                console.error('Error fetching account balance:', error);
-            }
-        };
-
-        if (publicKey) {
-            setPubAddress(publicKey.toBase58());
-            fetchAccountBalance();
-
-            // Fetch account balance every 2 seconds
-            intervalId = setInterval(fetchAccountBalance, 2000);
-        } else {
-            setPubAddress('');
+        if (publicKey == null) {
+            setPubAddress('')
             setWalletBalance(0);
+        } else {
+            setPubAddress(publicKey.toBase58())
+
+            async function getAccountBalance() {
+                try {
+                    const balance = await connection.getBalance(publicKey);
+                    fetch("https://price.jup.ag/v4/price?ids=SOL")
+                        .then((response) => response.json())
+                        .then((result) => {
+                            let perusdt = result.data.SOL.price
+                            setWalletBalance(balance / 1000000000 * perusdt);
+
+                        })
+                        .catch((error) => console.error(error));
+                } catch (error) {
+                    console.error('Error fetching account balance:', error);
+                }
+            }
+
+            getAccountBalance();
         }
 
-        // Clear interval on component unmount
-        return () => {
-            clearInterval(intervalId);
-        };
+    }, [publicKey, walletBalance, setUpdater])
 
-    }, [publicKey]);
+    // useEffect(() => {
+    //     let intervalId;
+
+    //     const fetchAccountBalance = async (key) => {
+    //         try {
+    //             const balance = await connection.getBalance(key);
+    //             fetch("https://price.jup.ag/v4/price?ids=SOL")
+    //                 .then((response) => response.json())
+    //                 .then((result) => {
+    //                     let perusdt = result.data.SOL.price;
+    //                     setWalletBalance(balance / 1000000000 * perusdt);
+    //                 })
+    //                 .catch((error) => console.error(error));
+    //         } catch (error) {
+    //             console.error('Error fetching account balance:', error);
+    //         }
+    //     };
+
+    //     if (publicKey) {
+    //         setPubAddress(publicKey?.toBase58());
+    //         fetchAccountBalance(publicKey);
+
+    //         // Fetch account balance every 2 seconds
+    //         intervalId = setInterval(fetchAccountBalance, 2000);
+    //     } else {
+    //         setPubAddress('');
+    //         setWalletBalance(0);
+    //     }
+
+    //     // Clear interval on component unmount
+    //     return () => {
+    //         clearInterval(intervalId);
+    //     };
+
+    // }, [publicKey]);
 
 
 
