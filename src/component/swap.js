@@ -94,12 +94,12 @@ export default function Swap({ pub_address }) {
 
         // Execute the transaction
         // // const rawTransaction = transaction.serialize()
-        const txid = await sendTransaction(transaction, connection, {
-            skipPreflight: true,
-            maxRetries: 2
-        })
+
         try {
-            const txid = await sendTransaction(transaction, connection);
+            const txid = await sendTransaction(transaction, connection, {
+                skipPreflight: true,
+                maxRetries: 2
+            })
             await connection.confirmTransaction(txid);
             console.log(`https://solscan.io/tx/${txid}`);
             setLoading(false);
